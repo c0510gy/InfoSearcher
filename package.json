@@ -11,18 +11,18 @@
     "url": "git+https://github.com/c0510gy/InfoSearcher.git"
   },
   "devDependencies": {
-      "babel-cli": "^6.26.0",
-      "babel-eslint": "^7.2.3",
-      "babel-loader": "^7.1.1",
-      "babel-plugin-transform-object-rest-spread": "^6.26.0",
-      "babel-plugin-transform-react-jsx": "^6.24.1",
-      "babel-preset-env": "^1.6.1",
-      "copy-webpack-plugin": "^4.0.1",
-      "crx-webpack-plugin": "^0.1.5",
-      "eslint": "^4.2.0",
-      "eslint-plugin-react": "^7.1.0",
-      "rimraf": "^2.6.1",
-      "webpack": "^3.2.0"
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^7.2.3",
+    "babel-loader": "^7.1.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-preset-env": "^1.6.1",
+    "copy-webpack-plugin": "^4.0.1",
+    "crx-webpack-plugin": "^0.1.5",
+    "eslint": "^4.2.0",
+    "eslint-plugin-react": "^7.1.0",
+    "rimraf": "^2.6.1",
+    "webpack": "^3.2.0"
   },
   "nodemonConfig": {
     "ignore": [
