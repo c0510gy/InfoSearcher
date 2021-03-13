@@ -1,6 +1,6 @@
 export function textResponse(message) {
-  console.log(message)
+  console.log(message);
 
   // test code
-  return 'message from background : text response'
+  return 'message from background : text response';
 }

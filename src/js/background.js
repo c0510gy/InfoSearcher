@@ -1,12 +1,11 @@
-import { textResponse } from './textProcessing/background-text'
+import { textResponse } from './textProcessing/background-text';
 
-const backgroundGlobal = {
-};
+const backgroundGlobal = {};
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-  if(message.type == 'text') {
-    let ret = textResponse(message)
-    sendResponse(ret)
+  if (message.type == 'text') {
+    let ret = textResponse(message);
+    sendResponse(ret);
   }
 });
 
