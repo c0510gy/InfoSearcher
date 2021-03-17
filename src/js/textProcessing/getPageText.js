@@ -1,20 +1,4 @@
-function removeTag(copy, tagName) {
-  let tags = copy.getElementsByTagName(tagName);
-  let l = tags.length;
-  let i;
-  for (i = l - 1; i >= 0; i--) {
-    tags[i].parentNode.removeChild(tags[i]);
-  }
-  return copy;
-}
-
-function filterMainContent(copy) {
-  // 핵심 내용에 해당하는 text를 필터링 하는 함수
-  // 관련된 함수가 많이 필요할 것.
-
-  // test code
-  return copy.body.innerText;
-}
+import { filterMainContent } from './textFiltering';
 
 function getTitle() {
   return document.getElementsByTagName('title')[0].innerText;
@@ -48,10 +32,6 @@ function main() {
   // test code
   let title = getTitle();
   let copy = document.cloneNode(true);
-  let tags = ['a', 'code', 'script', 'style'];
-  tags.forEach(function (tag) {
-    copy = removeTag(copy, tag);
-  });
   let mainText = filterMainContent(copy);
   console.log(title);
   console.log(mainText);
