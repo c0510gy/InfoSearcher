@@ -8,8 +8,9 @@ module.exports = {
     popup: './src/js/popup.js',
     background: './src/js/background.js',
     'in-content': './src/js/in-content.js',
-    'getPageText': './src/js/textProcessing/getPageText.js',
-    'background-text': './src/js/textProcessing/background-text.js',
+    getPageText: './src/js/textProcessing/getPageText.js',
+    textFiltering: './src/js/textProcessing/textFiltering.js',
+    'background-text': './src/js/textProcessing/background-text.js'
   },
   output: {
     path: path.resolve(__dirname, 'dist'),

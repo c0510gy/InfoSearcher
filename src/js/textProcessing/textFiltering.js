@@ -12,7 +12,9 @@ function removeTag(copy, tagName) {
 function removeTagWithID(copy, id) {
   // function for removing useless tag with id
   let tag = copy.getElementById(id);
-  tag.parentNode.removeChild(tag);
+  if (tag) {
+    tag.parentNode.removeChild(tag);
+  }
   return copy;
 }
 
