@@ -12,8 +12,8 @@ function mockButtonClickedHandler() {
 }
 
 const initPopupScript = () => {
-  document.getElementById('mcokButton').addEventListener('click', function () {
-    getSavedPages();
+  document.getElementById('mockButton').addEventListener('click', function () {
+    mockButtonClickedHandler();
   });
 };
 
