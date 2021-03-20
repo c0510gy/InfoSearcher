@@ -1,4 +1,4 @@
-import mock from './modules';
+import mock from './modules/mock';
 
 // Data retriever
 setInterval(function () {

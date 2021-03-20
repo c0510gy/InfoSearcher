@@ -1,4 +1,4 @@
-import mock from './modules';
+import mock from './modules/mock';
 
 // req handler
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
