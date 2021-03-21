@@ -24,7 +24,7 @@ function HandleSendMainContentResponse(response) {
   console.log(response);
 }
 
-function main() {
+function textProcessing() {
   // 현재 페이지에서 메인에 해당하는 text 를 불러오기 위한 함수
   // 현재 페이지에 접근하고, 필터 함수에 전달하고, 그 핵심 내용을 받아 다시
   // 전달하는 역할
@@ -33,9 +33,14 @@ function main() {
   let title = getTitle();
   let copy = document.cloneNode(true);
   let mainText = filterMainContent(copy);
+  //console.log(title);
+  //console.log(mainText);
   console.log(title);
+
   console.log(mainText);
-  //sendMainContent(mainText);
+
+  // sendMainContent(mainText, title);
+  sendMainContent('hi', title);
 }
 
-main();
+textProcessing();
