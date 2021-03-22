@@ -21,8 +21,6 @@ function removeTagWithID(copy, id) {
 }
 
 function filterWithSpace(content) {
-  console.log(content);
-
   content = content.replace(/[ \t]+/g, ' ').replace(/ \n+/g, '\n');
   let separatedContent = content.split('\n'.repeat(5));
   let longest = separatedContent.sort(function (a, b) {
