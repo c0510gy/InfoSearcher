@@ -1,4 +1,4 @@
-import { filterMainContent } from './textFiltering';
+import { filterMainContent } from './text-filtering';
 
 function getTitle() {
   return document.getElementsByTagName('title')[0].innerText;
@@ -33,10 +33,8 @@ function textProcessing() {
   let title = getTitle();
   let copy = document.cloneNode(true);
   let mainText = filterMainContent(copy);
-  //console.log(title);
-  //console.log(mainText);
-  console.log(title);
 
+  console.log(title);
   console.log(mainText);
 
   // sendMainContent(mainText, title);

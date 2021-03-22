@@ -1,4 +1,4 @@
-import { textResponse } from './textProcessing/background-text';
+import { textResponse } from './text-processing/background-text';
 
 const backgroundGlobal = {};
 

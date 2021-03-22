@@ -15,7 +15,7 @@
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["in-content.js", "getPageText.js"]
+      "js": ["in-content.js", "text-processing.js"]
     }
   ],
   "background": {
