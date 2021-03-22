@@ -15,15 +15,20 @@ function removeTagWithID(copy, id) {
   // function for removing useless tag with id
   let element = copy.getElementById(id);
   if (element) {
-    tag.parentNode.removeChild(element);
+    element.parentNode.removeChild(element);
   }
   return copy;
 }
 
-function regexWhiteSpaceAndLineBreaks(content) {
-  content = content.replace(/[ \t]+/g, ' ');
-  content = content.replace(/ \n+/g, '\n');
-  return content;
+function filterWithSpace(content) {
+  console.log(content);
+
+  content = content.replace(/[ \t]+/g, ' ').replace(/ \n+/g, '\n');
+  let separatedContent = content.split('\n'.repeat(5));
+  let longest = separatedContent.sort(function (a, b) {
+    return b.length - a.length;
+  })[0];
+  return longest.trim();
 }
 
 export function filterMainContent(copy) {
@@ -36,7 +41,7 @@ export function filterMainContent(copy) {
   copy = removeTagWithID(copy, 'footer');
 
   let mainContent = copy.body.innerText.trim();
-  mainContent = regexWhiteSpaceAndLineBreaks(mainContent);
+  mainContent = filterWithSpace(mainContent);
 
   return mainContent;
 }
