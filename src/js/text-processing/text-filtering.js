@@ -29,7 +29,7 @@ function filterWithSpace(content) {
   return longest.trim();
 }
 
-export function filterMainContent(copy) {
+export function mainTextContentProcessing(copy) {
   // 핵심 내용에 해당하는 text를 필터링 하는 함수
   // 관련된 함수가 많이 필요할 것.
 

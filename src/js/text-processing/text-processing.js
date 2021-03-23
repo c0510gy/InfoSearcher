@@ -1,4 +1,4 @@
-import { filterMainContent } from './text-filtering';
+import { mainTextContentProcessing } from './text-filtering';
 
 function getTitle() {
   return document.getElementsByTagName('title')[0].innerText;
@@ -12,10 +12,10 @@ function sendMainContent(text, title) {
     text: text,
     title: title
   };
-  chrome.runtime.sendMessage(message, HandleSendMainContentResponse);
+  chrome.runtime.sendMessage(message, handleSendMainContentResponse);
 }
 
-function HandleSendMainContentResponse(response) {
+function handleSendMainContentResponse(response) {
   // 현재 페이지의 핵심 내용을 보내고 난 뒤, 그 응답을 받았을 때,
   // 응답은 url이나 그런 정보가 될 수 있을 것.
   // 그런 정보를 띄워줘야 하니, popup.html이나 관련 메서드가 여기에 들어서야 함.
@@ -32,13 +32,12 @@ function textProcessing() {
   // test code
   let title = getTitle();
   let copy = document.cloneNode(true);
-  let mainText = filterMainContent(copy);
+  let mainText = mainTextContentProcessing(copy);
 
   console.log(title);
   console.log(mainText);
 
-  // sendMainContent(mainText, title);
-  sendMainContent('hi', title);
+  sendMainContent(mainText, title);
 }
 
 textProcessing();
