@@ -1,13 +1,17 @@
-import { textResponse } from './text-processing/background-text';
+import mock from './modules/mock';
 
-const backgroundGlobal = {};
-
+// req handler
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-  if (message.type == 'text') {
-    let ret = textResponse(message);
-    sendResponse(ret);
-  }
-});
+  const { type } = message;
+  const {} = sender;
 
-// Make variables accessible from chrome.extension.getBackgroundPage()
-window.backgroundGlobal = backgroundGlobal;
+  switch (type) {
+    case 'mock':
+      sendResponse({
+        message: 'mock'
+      });
+      break;
+  }
+
+  return true;
+});
