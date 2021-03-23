@@ -7,8 +7,7 @@ module.exports = {
   entry: {
     popup: './src/js/popup.js',
     background: './src/js/background.js',
-    'in-content': './src/js/in-content.js',
-    'text-processing': './src/js/text-processing/text-processing.js'
+    'in-content': './src/js/in-content.js'
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
