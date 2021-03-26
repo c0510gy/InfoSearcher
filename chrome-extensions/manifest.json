@@ -1,0 +1,45 @@
+{
+  "manifest_version": 2,
+  "name": "AudioCaptureDemo",
+  "version": "0.0.1",
+  "description": "This is AudioCaptureDemo.",
+  "icons": {
+    "16": "16x16.png",
+    "48": "48x48.png",
+    "128": "128x128.png"
+  },
+  "browser_action": {
+    "default_title": "AudioCaptureDemo",
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": true
+  },
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'; img-src * data: 'self' 'unsafe-eval'",
+  "offline_enabled": true,
+  "permissions": [
+    "tabs",
+    "tabCapture",
+    "downloads",
+    "storage",
+    "proxy",
+    "http://localhost:4000/api/hello"
+  ],
+  "commands": {
+    "start": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+S",
+        "mac": "Command+Shift+U"
+      },
+      "description": "Start Capture"
+    },
+    "stop": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+X",
+        "mac": "MacCtrl+Shift+X"
+      },
+      "description": "Stop Capture"
+    }
+  }
+}
