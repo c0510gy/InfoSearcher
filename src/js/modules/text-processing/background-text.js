@@ -1,6 +1,6 @@
-import Html2Text from './modules/text-processing/html-processing';
+import Html2Text from './html-processing.js';
 
-export function textProcessing(message, sendResponse) {
+export default function textProcessing(message, sendResponse) {
   let title = message.html.getElementsByTagName('title')[0].innerText;
   let htmlParser = new Html2Text(message.html);
 

@@ -1,6 +1,6 @@
 import { TAGS } from './items';
 
-export class Html2Text {
+export default class Html2Text {
   constructor(html) {
     this.html = html;
     this.textContentProcessing();
