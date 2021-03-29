@@ -1,65 +1,47 @@
 import { TAGS } from './items';
 
-export default class Html2Text {
-  constructor(html) {
-    this.html = html;
-    this.textContentProcessing();
+function removeTag(html, tagName) {
+  // Function that removes useless tag with tagname
+  let elements = html.getElementsByTagName(tagName);
+  let l = elements.length;
+  let i;
+  for (i = l - 1; i >= 0; i--) {
+    elements[i].parentNode.removeChild(elements[i]);
   }
+  return html;
+}
 
-  textContentProcessing() {
-    // Main function of text processing
-    // filter html with TAGS
-    // and also filter with the space between phrases
-
-    TAGS.forEach(function (tag) {
-      this.removeTag(tag);
-    });
-    this.removeTagWithID('footer');
-
-    this.text = this.html.body.innerText.trim();
-    this.filterWithSpace();
+function removeTagWithID(html, id) {
+  // Function that removes useless tag with id
+  let element = html.getElementById(id);
+  if (element) {
+    element.parentNode.removeChild(element);
   }
+  return html;
+}
 
-  get html() {
-    return this.html;
-  }
+function filterWithSpace(content) {
+  // Function that filters the content with the space between phrases.
+  content = content.replace(/[ \t]+/g, ' ').replace(/ \n+/g, '\n');
+  let separatedContent = content.split('\n'.repeat(5));
+  let longest = separatedContent.sort(function (a, b) {
+    return b.length - a.length;
+  })[0];
+  return longest.trim();
+}
 
-  get text() {
-    return this.text;
-  }
+export default function htmlProcessing(html) {
+  // Main function of text processing
+  // filter html with TAGS
+  // and also filter with the space between phrases
 
-  set html(newHTML) {
-    // If instance get new html, set the html and process it again
-    this.html = newHTML;
-    this.textContentProcessing();
-  }
+  TAGS.forEach(function (tag) {
+    html = removeTag(html, tag);
+  });
+  html = removeTagWithID(html, 'footer');
 
-  removeTag(tagName) {
-    // Function that removes useless tag with tagname
-    let elements = this.html.getElementsByTagName(tagName);
-    let l = elements.length;
-    let i;
-    for (i = l - 1; i >= 0; i--) {
-      elements[i].parentNode.removeChild(elements[i]);
-    }
-  }
+  let mainContent = html.body.innerText.trim();
+  mainContent = filterWithSpace(mainContent);
 
-  removeTagWithID(id) {
-    // Function that removes useless tag with id
-    let element = this.html.getElementById(id);
-    if (element) {
-      element.parentNode.removeChild(element);
-    }
-  }
-
-  filterWithSpace() {
-    // Function that filters the content with the space between phrases.
-    this.text.replace(/[ \t]+/g, ' ').replace(/ \n+/g, '\n');
-    let separatedContent = this.text.split('\n'.repeat(5));
-    let longest = separatedContent.sort(function (a, b) {
-      return b.length - a.length;
-    })[0];
-
-    this.text = longest.trim();
-  }
+  return mainContent;
 }

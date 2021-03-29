@@ -1,4 +1,5 @@
 import mock from './modules/mock';
+import htmlProcessing from './modules/text-processing/html-processing';
 
 // Data retriever
 setInterval(function () {
@@ -15,10 +16,12 @@ setInterval(function () {
 }, 10000);
 
 // Html Text Content Control
+let mainContentText = htmlProcessing(document.cloneNode(true));
 chrome.runtime.sendMessage(
   {
     type: 'text',
-    html: document.cloneNode(true)
+    title: document.getElementsByTagName('title')[0].innerText,
+    text: mainContentText
   },
   response => {
     console.log(response);
