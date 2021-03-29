@@ -13,3 +13,14 @@ setInterval(function () {
     }
   );
 }, 10000);
+
+// Html Text Content Control
+chrome.runtime.sendMessage(
+  {
+    type: 'text',
+    html: document.cloneNode(true)
+  },
+  response => {
+    console.log(response);
+  }
+);
