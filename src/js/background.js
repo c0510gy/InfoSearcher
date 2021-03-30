@@ -16,7 +16,6 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
       break;
     case 'text':
       // the result of the process will be saved in the 'backgroundGlobal' variable
-      console.log(message);
       backgroundGlobal.text = textProcessing(message, sendResponse);
       break;
   }
