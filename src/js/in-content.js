@@ -16,14 +16,7 @@ setInterval(function () {
 }, 10000);
 
 // Html Text Content Control
-let mainContentText = htmlProcessing(document.cloneNode(true));
-chrome.runtime.sendMessage(
-  {
-    type: 'text',
-    title: document.getElementsByTagName('title')[0].innerText,
-    text: mainContentText
-  },
-  response => {
-    console.log(response);
-  }
-);
+let message = htmlProcessing(document.cloneNode(true));
+chrome.runtime.sendMessage(message, response => {
+  console.log(response);
+});
