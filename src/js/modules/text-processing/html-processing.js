@@ -50,10 +50,12 @@ export default function htmlProcessing(html) {
   html = removeTagWithID(html, 'footer');
 
   // Filter text
+  console.log(html.body.innerText);
   let mainContent = html.body.innerText.trim();
   mainContent = filterWithSpace(mainContent);
 
   return {
+    type: 'text',
     title: title,
     text: mainContent
   };

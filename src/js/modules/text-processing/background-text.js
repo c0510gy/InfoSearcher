@@ -9,7 +9,7 @@ export default function textProcessing(message, sendResponse) {
   });
 
   return {
-    title: title,
+    title: message.title,
     keywords: ''
   };
 }

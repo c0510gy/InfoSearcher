@@ -16,5 +16,7 @@ export const TAGS = [
   'th',
   'nav',
   'aside',
-  'footer'
+  'footer',
+  'figure',
+  'img'
 ];
