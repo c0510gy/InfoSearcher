@@ -3,10 +3,8 @@ import { TAGS } from './items';
 function removeTag(html, tagName) {
   // Function that removes useless tag with tagname
   let elements = html.getElementsByTagName(tagName);
-  let l = elements.length;
-  let i;
-  for (i = l - 1; i >= 0; i--) {
-    elements[i].parentNode.removeChild(elements[i]);
+  for (let idx = elements.length - 1; idx >= 0; idx--) {
+    elements[idx].parentNode.removeChild(elements[idx]);
   }
   return html;
 }
