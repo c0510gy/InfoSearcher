@@ -1,5 +1,5 @@
 import mock from './modules/mock';
-import textProcessing from './modules/text-processing/background-text.js';
+import textProcessing from './modules/text-processing/background-text';
 
 const backgroundGlobal = {};
 
