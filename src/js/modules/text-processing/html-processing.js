@@ -3,10 +3,8 @@ import { TAGS } from './items';
 function removeTag(html, tagName) {
   // Function that removes useless tag with tagname
   let elements = html.getElementsByTagName(tagName);
-  let l = elements.length;
-  let i;
-  for (i = l - 1; i >= 0; i--) {
-    elements[i].parentNode.removeChild(elements[i]);
+  for (let idx = elements.length - 1; idx >= 0; idx--) {
+    elements[idx].parentNode.removeChild(elements[idx]);
   }
   return html;
 }
@@ -25,8 +23,8 @@ function filterWithSpace(content) {
   content = content.replace(/[ \t]+/g, ' ').replace(/ \n+/g, '\n');
   let separatedContent = content.split('\n'.repeat(4));
   let longest = Math.max(...(separatedContent.map(el => el.length)));
-  ret = '';
-  separatedContent.forEach((subContent) => {
+  let ret = '';
+  separatedContent.forEach(function (subContent) {
     if (subContent.length >= longest * 0.2) {
       ret += subContent;
     }
