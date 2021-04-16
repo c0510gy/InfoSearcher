@@ -24,10 +24,14 @@ function filterWithSpace(content) {
   // Function that filters the content with the space between phrases.
   content = content.replace(/[ \t]+/g, ' ').replace(/ \n+/g, '\n');
   let separatedContent = content.split('\n'.repeat(4));
-  let longest = separatedContent.sort(function (a, b) {
-    return b.length - a.length;
-  })[0];
-  return longest.trim();
+  let longest = Math.max(...(separatedContent.map(el => el.length)));
+  ret = '';
+  separatedContent.forEach((subContent) => {
+    if (subContent.length >= longest * 0.2) {
+      ret += subContent;
+    }
+  });
+  return ret.trim();
 }
 
 export default function htmlProcessing(html) {
