@@ -23,7 +23,6 @@ export class Recorder {
         for (let ch = 0; ch < NUMCHANNELS; ++ch) buffer[ch] = event.inputBuffer.getChannelData(ch);
         chrome.tabs.get(tabId, function (data) {
           if (data.audible) {
-            // ToDo - data.toString()
             const data = encodeWav(buffer);
             const urls = "http://localhost:8000/stt";
             const opts = {

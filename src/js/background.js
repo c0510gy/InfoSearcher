@@ -13,7 +13,16 @@ function encodeWavOneChannel(buffer) {
     bufData.setInt16(i * 2, num < 0 ? Math.max(num, -32768) : Math.min(num, 32767), true);
   }
 
-  return bufData.buffer;
+  const buf = new Uint8Array(bufData.buffer);
+  let bufStr = "";
+
+  for (let i = 0; i < buf.byteLength; ++i) {
+    let bytechar = buf[i].toString(16);
+    if (bytechar.length === 1) bytechar = '0' + bytechar;
+    bufStr += bytechar;
+  }
+
+  return bufStr;
 }
 
 function audioCapture(tabId) {
