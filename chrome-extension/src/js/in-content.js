@@ -1,5 +1,6 @@
 import mock from './modules/mock';
 import htmlProcessing from './modules/text-processing/html-processing';
+import imageProcessingFromHTML from './modules/image-processing/html-image-processing';
 
 // Data retriever
 setInterval(function () {
@@ -20,3 +21,11 @@ let message = htmlProcessing(document.cloneNode(true));
 chrome.runtime.sendMessage(message, response => {
   console.log(response);
 });
+
+// Html Image Content Control
+(async function () {
+  const imageProcessingMessage = await imageProcessingFromHTML(document);
+  chrome.runtime.sendMessage(imageProcessingMessage, response => {
+    console.log(response);
+  });
+})();
