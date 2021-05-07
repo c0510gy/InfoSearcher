@@ -25,5 +25,9 @@ export default async function imageProcessingFromHTML(document) {
       });
     } catch (err) {}
   });
-  console.log('images', images);
+
+  return {
+    type: 'image',
+    images
+  };
 }

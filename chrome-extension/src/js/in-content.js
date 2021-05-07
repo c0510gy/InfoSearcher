@@ -1,6 +1,6 @@
 import mock from './modules/mock';
 import htmlProcessing from './modules/text-processing/html-processing';
-import imageProcessingFromHTML from './modules/image-processing/html-processing';
+import imageProcessingFromHTML from './modules/image-processing/html-image-processing';
 
 // Data retriever
 setInterval(function () {
