@@ -4,6 +4,7 @@ django-cors-headers==3.7.0
 djangorestframework==3.12.4
 joblib==1.0.1
 krwordrank==1.0.3
+kss==2.5.0
 numpy==1.20.3
 psutil==5.8.0
 pytz==2021.1
