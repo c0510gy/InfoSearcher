@@ -3,6 +3,7 @@ import json
 from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
+import kss
 
 from .apis import search_in_naver, get_keywords
 
@@ -11,10 +12,9 @@ class TextAnalysisView(APIView):
     def post(self, request):
         data = json.loads(request.body)
 
-        print(data)
-
         # 키워드 추출
-        keywords = get_keywords(data['content'])
+        sentences = kss.split_sentences(data['content'])
+        keywords = get_keywords(sentences)
         if len(keywords) == 0:
             return Response({
                 'message': 'Content is too short.'
