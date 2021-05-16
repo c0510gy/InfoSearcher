@@ -20,14 +20,28 @@ function updateCards() {
   if (backgroundGlobal.text) {
     const textCard = document.createElement('li');
 
-    textCard.innerHtml = backgroundGlobal.text.content;
+    textCard.innerHtml = `
+      <div class="card">
+        <div class="container">
+          <h4><b>${backgroundGlobal.text.title}</b></h4>
+          <p>${backgroundGlobal.text.content}</p>
+        </div>
+      </div>
+    `;
 
     cardListElement.appendChild(textCard);
   }
   if (backgroundGlobal.image) {
     const imageCard = document.createElement('li');
 
-    textCard.imageCard = backgroundGlobal.image.content;
+    textCard.imageCard = `
+      <div class="card">
+        <div class="container">
+          <h4><b>${backgroundGlobal.image.title}</b></h4>
+          <p>${backgroundGlobal.image.content}</p>
+        </div>
+      </div>
+    `;
 
     cardListElement.appendChild(imageCard);
   }
