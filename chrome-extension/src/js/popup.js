@@ -38,6 +38,7 @@ const initPopupScript = () => {
     mockButtonClickedHandler();
   });
   updateCards();
+  setInterval(updateCards, 2000);
 };
 
 // Fire scripts after page has loaded
