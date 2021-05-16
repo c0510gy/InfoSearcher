@@ -18,28 +18,26 @@ function updateCards() {
   cardListElement.innerHTML = '';
 
   if (backgroundGlobal.text) {
-    const textCard = document.createElement('li');
+    const textCard = document.createElement('div');
+    textCard.setAttribute('class', 'card');
 
-    textCard.innerHtml = `
-      <div class="card">
-        <div class="container">
-          <h4><b>${backgroundGlobal.text.title}</b></h4>
-          <p>${backgroundGlobal.text.content}</p>
-        </div>
+    textCard.innerHTML = `
+      <div class="container">
+        <h4><b>${backgroundGlobal.text.title}</b></h4>
+        <p>${backgroundGlobal.text.content}</p>
       </div>
     `;
 
     cardListElement.appendChild(textCard);
   }
   if (backgroundGlobal.image) {
-    const imageCard = document.createElement('li');
+    const imageCard = document.createElement('div');
+    imageCard.setAttribute('class', 'card');
 
-    textCard.imageCard = `
-      <div class="card">
-        <div class="container">
-          <h4><b>${backgroundGlobal.image.title}</b></h4>
-          <p>${backgroundGlobal.image.content}</p>
-        </div>
+    imageCard.innerHTML = `
+      <div class="container">
+        <h4><b>${backgroundGlobal.image.title}</b></h4>
+        <p>${backgroundGlobal.image.content}</p>
       </div>
     `;
 
