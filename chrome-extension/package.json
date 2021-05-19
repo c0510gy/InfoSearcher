@@ -42,6 +42,7 @@
   },
   "homepage": "https://github.com/c0510gy/InfoSearcher#readme",
   "dependencies": {
+    "axios": "^0.21.1",
     "eslint-config-prettier": "^8.1.0"
   }
 }
