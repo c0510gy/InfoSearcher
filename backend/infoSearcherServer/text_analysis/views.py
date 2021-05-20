@@ -14,18 +14,17 @@ class TextAnalysisView(APIView):
 
         # 키워드 추출
         sentences = kss.split_sentences(data['content'])
-        keywords = get_keywords(sentences)
+        keywords = get_keywords(data['title'], sentences, 8)
         if len(keywords) == 0:
             return Response({
                 'message': 'Content is too short.'
             }, status=status.HTTP_400_BAD_REQUEST)
 
-        keywords = ' '.join([keyword.replace('_', '') for keyword in keywords])
-
         # 네이버 API 호출
-        rescode, result = search_in_naver(keywords, 'blog')
-
-        # 키워드를 추출하고, 네이버에 검색한 다음에, 결과에서 몇개 뽑아서 링크 제공
+        query = ' '.join([keyword.replace('_', '') for keyword in keywords])
+        rescode, result = search_in_naver(query, 'blog')
         if rescode != 200:
             return Response(result, status=status.HTTP_400_BAD_REQUEST)
-        return Response(result, status=status.HTTP_200_OK)
+
+        ret = {'keyword': keywords, 'result': result['items'][:5]}
+        return Response(ret, status=status.HTTP_200_OK)
