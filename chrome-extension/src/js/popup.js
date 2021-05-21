@@ -20,11 +20,13 @@ function updateCards() {
   if (backgroundGlobal.text) {
     const textCard = document.createElement('div');
     textCard.setAttribute('class', 'card');
-
     textCard.innerHTML = `
       <div class="container">
-        <h4><b>${backgroundGlobal.text.title}</b></h4>
-        <p>${backgroundGlobal.text.content}</p>
+        <h4><b>${backgroundGlobal.text[0].title}</b></h4>
+        <div style="display:block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+          ${backgroundGlobal.text[0].description}
+        </div>
+        <p><a href="${backgroundGlobal.text[0].link}">See More Detail</a></p>
       </div>
     `;
 

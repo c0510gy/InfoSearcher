@@ -18,5 +18,6 @@ export const TAGS = [
   'aside',
   'footer',
   'figure',
-  'img'
+  'img',
+  'cite',
 ];

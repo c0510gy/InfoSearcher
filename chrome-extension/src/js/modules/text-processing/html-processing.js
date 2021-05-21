@@ -50,11 +50,6 @@ export default function htmlProcessing(html) {
   // Filter text
   let mainContent = html.body.innerText.trim();
   mainContent = filterWithSpace(mainContent);
-  console.log({
-    type: 'text',
-    title: title,
-    content: mainContent
-  })
   return {
     type: 'text',
     title: title,
