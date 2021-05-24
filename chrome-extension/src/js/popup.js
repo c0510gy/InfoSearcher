@@ -26,7 +26,7 @@ function updateCards() {
         <div style="display:block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
           ${backgroundGlobal.text[0].description}
         </div>
-        <p><a href="${backgroundGlobal.text[0].link}">See More Detail</a></p>
+        <p><a href="${backgroundGlobal.text[0].link}" target="_blank">See More Detail</a></p>
       </div>
     `;
 
