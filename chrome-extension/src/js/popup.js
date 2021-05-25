@@ -27,7 +27,7 @@ function updateCards() {
     backgroundGlobal.text.forEach(linkInfo => {
       console.log(linkInfo);
       const textCard = document.createElement('div');
-      textCard.setAttribute('class', 'card');
+      textCard.setAttribute('class', 'textCard');
       textCard.innerHTML = `
       <div class="container">
         <h4><b>${linkInfo.title}</b></h4>
