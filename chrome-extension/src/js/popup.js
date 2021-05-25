@@ -18,19 +18,26 @@ function updateCards() {
   cardListElement.innerHTML = '';
 
   if (backgroundGlobal.text) {
-    const textCard = document.createElement('div');
-    textCard.setAttribute('class', 'card');
-    textCard.innerHTML = `
-      <div class="container">
-        <h4><b>${backgroundGlobal.text[0].title}</b></h4>
-        <div style="display:block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
-          ${backgroundGlobal.text[0].description}
-        </div>
-        <p><a href="${backgroundGlobal.text[0].link}" target="_blank">See More Detail</a></p>
-      </div>
+    const textCardField = document.createElement('div');
+    textCardField.setAttribute('class', 'textContainer');
+    textCardField.innerHTML = `
+    <div class="textTitle">현재 글과 관련된 포스트</div>
     `;
 
-    cardListElement.appendChild(textCard);
+    backgroundGlobal.text.forEach(linkInfo => {
+      console.log(linkInfo);
+      const textCard = document.createElement('div');
+      textCard.setAttribute('class', 'card');
+      textCard.innerHTML = `
+      <div class="container">
+        <h4><b>${linkInfo.title}</b></h4>
+        <p><a href="${linkInfo.link}" target="_blank">See More Detail</a></p>
+      </div>
+      `;
+      textCardField.appendChild(textCard);
+    });
+
+    cardListElement.appendChild(textCardField);
   }
   if (backgroundGlobal.image) {
     const imageCard = document.createElement('div');
