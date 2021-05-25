@@ -1,4 +1,6 @@
 import mock from './modules/mock';
+import getTextCardList from './modules/text-processing/popup-text';
+
 
 function mockButtonClickedHandler() {
   chrome.runtime.sendMessage(
@@ -18,26 +20,7 @@ function updateCards() {
   cardListElement.innerHTML = '';
 
   if (backgroundGlobal.text) {
-    const textCardField = document.createElement('div');
-    textCardField.setAttribute('class', 'textContainer');
-    textCardField.innerHTML = `
-    <div class="textTitle">현재 글과 관련된 포스트</div>
-    `;
-
-    backgroundGlobal.text.forEach(linkInfo => {
-      console.log(linkInfo);
-      const textCard = document.createElement('div');
-      textCard.setAttribute('class', 'textCard');
-      textCard.innerHTML = `
-      <div class="container">
-        <h4><b>${linkInfo.title}</b></h4>
-        <p><a href="${linkInfo.link}" target="_blank">See More Detail</a></p>
-      </div>
-      `;
-      textCardField.appendChild(textCard);
-    });
-
-    cardListElement.appendChild(textCardField);
+    cardListElement.appendChild(getTextCardList(backgroundGlobal.text));
   }
   if (backgroundGlobal.image) {
     const imageCard = document.createElement('div');
