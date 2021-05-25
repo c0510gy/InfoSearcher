@@ -2,7 +2,7 @@ export default function getTextCardList(linkInfos) {
   const textCardField = document.createElement('div');
   textCardField.setAttribute('class', 'textContainer');
   textCardField.innerHTML = `
-  <div class="textTitle">현재 글과 관련된 포스트</div>
+  <div class="textTitle">텍스트와 관련된 글</div>
   `;
 
   linkInfos.forEach(linkInfo => {
