@@ -17,10 +17,21 @@ setInterval(function () {
 }, 10000);
 
 // Html Text Content Control
-let message = htmlProcessing(document.cloneNode(true));
-chrome.runtime.sendMessage(message, response => {
-  console.log(response);
-});
+let message;
+if (window.location.href.search('blog.naver.com') !== -1) {
+  setTimeout(function() {
+    let iframe = document.getElementById('mainFrame');
+    message = htmlProcessing(iframe.contentDocument.cloneNode(true));
+    chrome.runtime.sendMessage(message, response => {
+      console.log(response);
+    });
+  }, 2000);
+} else {
+  message = htmlProcessing(document.cloneNode(true));
+  chrome.runtime.sendMessage(message, response => {
+    console.log(response);
+  });
+}
 
 // Html Image Content Control
 (async function () {
