@@ -19,6 +19,7 @@ export const TAGS = [
   'footer',
   'figure',
   'img',
+  'cite',
 ];
 
 export const NAVER_TAGS = [

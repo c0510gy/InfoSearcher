@@ -103,12 +103,12 @@ def get_2gram(sentences):
 
 
 def wordrank(words):
-    min_count = 5  # 단어의 최소 출현 빈도수 (그래프 생성 시)
+    min_count = 3  # 단어의 최소 출현 빈도수 (그래프 생성 시)
     max_length = 12  # 단어의 최대 길이
     wordrank_extractor = KRWordRank(min_count=min_count, max_length=max_length)
 
-    beta = 0.85  # PageRank의 decaying factor beta
-    max_iter = 30
+    beta = 0.8  # PageRank의 decaying factor beta
+    max_iter = 50
     keywords, rank, graph = wordrank_extractor.extract(words, beta, max_iter)
     return keywords
 
@@ -117,7 +117,7 @@ def filter_two_gram(keywords, n):
     ret = []
     for keyword, score in keywords.items():
         if keyword[-1] != '_' and keyword.find('_') != -1:
-            ret.append((keyword, score))
+            ret.append((keyword.replace('_', ' '), score))
     return ret[:n]
 
 
@@ -126,18 +126,26 @@ def filter_one_gram(keywords, n):
     return ret[:n]
 
 
-def get_keywords(sentences):
+def get_keywords(title, sentences, n):
+    # n means how many keywords do you want
     # Get nouns and tokenizer
     noun_extractor, nouns, tokenizer = get_tokenizer(sentences)
 
-    # Get nouns
+    # Get nouns from title
+    keywords_in_title = []
+    for noun in nouns.keys():
+        if noun in title and len(noun) != 1:
+            keywords_in_title.append(noun)
+
+    # Get nouns from content
     tokenized_nouns = get_tokenized_nouns(sentences, noun_extractor, nouns, tokenizer)
     one_gram_nouns = [' '.join(nouns) for nouns in tokenized_nouns]
     two_gram_nouns = get_2gram(tokenized_nouns)
     two_gram_nouns = [' '.join(nouns) for nouns in two_gram_nouns]
 
     # Get keywords
-    one_gram_keywords = filter_one_gram(wordrank(one_gram_nouns), 2)
-    two_gram_keywords = filter_two_gram(wordrank(two_gram_nouns), 3)
+    one_gram_keywords = filter_one_gram(wordrank(one_gram_nouns), int(n * 0.3))
+    two_gram_keywords = filter_two_gram(wordrank(two_gram_nouns), n - int(n * 0.3))
+    keywords_in_content = [keywordInfo[0] for keywordInfo in one_gram_keywords + two_gram_keywords]
 
-    return [keywordInfo[0] for keywordInfo in one_gram_keywords + two_gram_keywords]
+    return keywords_in_content + keywords_in_title

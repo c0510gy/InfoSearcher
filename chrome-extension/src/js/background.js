@@ -65,8 +65,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
       });
       break;
     case 'text':
-      // the result of the process will be saved in the 'backgroundGlobal' variable
-      backgroundGlobal.text = textProcessing(message, sendResponse);
+      textProcessing(message, sendResponse);
       break;
     case 'image':
       backgroundGlobal.image = imageProcessing(message, sendResponse);

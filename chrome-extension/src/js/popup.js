@@ -1,4 +1,6 @@
 import mock from './modules/mock';
+import getTextCardList from './modules/text-processing/popup-text';
+
 
 function mockButtonClickedHandler() {
   chrome.runtime.sendMessage(
@@ -18,17 +20,7 @@ function updateCards() {
   cardListElement.innerHTML = '';
 
   if (backgroundGlobal.text) {
-    const textCard = document.createElement('div');
-    textCard.setAttribute('class', 'card');
-
-    textCard.innerHTML = `
-      <div class="container">
-        <h4><b>${backgroundGlobal.text.title}</b></h4>
-        <p>${backgroundGlobal.text.content}</p>
-      </div>
-    `;
-
-    cardListElement.appendChild(textCard);
+    cardListElement.appendChild(getTextCardList(backgroundGlobal.text));
   }
   if (backgroundGlobal.image) {
     const imageCard = document.createElement('div');
