@@ -1,3 +1,6 @@
+## Large size files
+yolov3.weights
+
 ## IDEs ###
 *.sublime-workspace
 .tag*
