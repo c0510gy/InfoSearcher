@@ -1,6 +1,9 @@
 import cv2
 import numpy as np
 import pathlib
+from io import StringIO
+import base64
+from PIL import Image
 
 myPath = str(pathlib.Path(__file__).parent.absolute())
 
@@ -68,5 +71,11 @@ def detect(model, image):
       result.append([class_ids[i], confidences[i], round(x), round(y), round(x+w), round(y+h)])
 
   return result
+
+def readb64(base64_string):
+  sbuf = StringIO()
+  sbuf.write(base64.b64decode(base64_string))
+  pimg = Image.open(sbuf)
+  return cv2.cvtColor(np.array(pimg), cv2.COLOR_RGB2BGR)
 
 YOLOV3_MODEL = load_model(YOLOV3_WEIGHTS_PATH, CONFIG_PATH)
