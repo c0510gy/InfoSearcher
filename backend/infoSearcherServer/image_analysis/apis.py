@@ -1,5 +1,11 @@
 import cv2
 import numpy as np
+import pathlib
+
+myPath = str(pathlib.Path(__file__).parent.absolute())
+
+CONFIG = myPath + '/yolov3.cfg'
+YOLOV3_WEIGHTS = myPath + '/yolov3.weights'
 
 def load_model(weights, config):
   net = cv2.dnn.readNet(weights, config)
