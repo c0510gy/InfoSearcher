@@ -8,7 +8,11 @@ from PIL import Image
 myPath = str(pathlib.Path(__file__).parent.absolute())
 
 CONFIG_PATH = myPath + '/yolov3.cfg'
+COCO_NAMES_PATH = myPath + '/coco.names'
 YOLOV3_WEIGHTS_PATH = myPath + '/yolov3.weights'
+
+with open(COCO_NAMES_PATH, 'r') as f:
+  COCO_LABELS = f.read().split()
 
 def load_model(weights, config):
   net = cv2.dnn.readNet(weights, config)
