@@ -4,7 +4,6 @@ export const TAGS = [
   'script',
   'style',
   'noscript',
-  'button',
   'li',
   'ul',
   'ol',
@@ -14,9 +13,29 @@ export const TAGS = [
   'tr',
   'td',
   'th',
+  'button',
   'nav',
   'aside',
   'footer',
   'figure',
-  'img'
+  'img',
 ];
+
+export const NAVER_TAGS = [
+  'a',
+  'code',
+  'script',
+  'style',
+  'noscript',
+  'button',
+  'nav',
+  'aside',
+  'footer',
+  'figure',
+  'img',
+]
+
+export const NAVER_CLASSNAMES = [
+  'se-video', 
+  'post-btn',
+]
