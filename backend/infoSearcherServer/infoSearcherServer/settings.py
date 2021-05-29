@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'text_analysis',
+    'image_analysis',
 ]
 
 MIDDLEWARE = [
