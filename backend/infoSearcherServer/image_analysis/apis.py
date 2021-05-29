@@ -4,8 +4,8 @@ import pathlib
 
 myPath = str(pathlib.Path(__file__).parent.absolute())
 
-CONFIG = myPath + '/yolov3.cfg'
-YOLOV3_WEIGHTS = myPath + '/yolov3.weights'
+CONFIG_PATH = myPath + '/yolov3.cfg'
+YOLOV3_WEIGHTS_PATH = myPath + '/yolov3.weights'
 
 def load_model(weights, config):
   net = cv2.dnn.readNet(weights, config)
@@ -68,3 +68,5 @@ def detect(model, image):
       result.append([class_ids[i], confidences[i], round(x), round(y), round(x+w), round(y+h)])
 
   return result
+
+YOLOV3_MODEL = load_model(YOLOV3_WEIGHTS_PATH, CONFIG_PATH)
