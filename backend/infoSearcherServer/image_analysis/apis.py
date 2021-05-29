@@ -73,9 +73,10 @@ def detect(model, image):
   return result
 
 def readb64(base64_string):
-  sbuf = StringIO()
-  sbuf.write(base64.b64decode(base64_string.split(',')[1]))
-  pimg = Image.open(sbuf)
-  return cv2.cvtColor(np.array(pimg), cv2.COLOR_RGB2BGR)
+  base64_string = base64_string if base64_string.find(',') == -1 else base64_string.split(',')[1]
+  im_bytes = base64.b64decode(base64_string)
+  im_arr = np.frombuffer(im_bytes, dtype=np.uint8)  # im_arr is one-dim Numpy array
+  img = cv2.imdecode(im_arr, flags=cv2.IMREAD_COLOR)
+  return img
 
 YOLOV3_MODEL = load_model(YOLOV3_WEIGHTS_PATH, CONFIG_PATH)
