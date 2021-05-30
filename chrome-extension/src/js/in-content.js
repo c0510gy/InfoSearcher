@@ -14,14 +14,6 @@ setInterval(function () {
       console.log('response', response);
     }
   );
-
-  // Html Image Content Control
-  (async function () {
-    const imageProcessingMessage = await imageProcessingFromHTML(document);
-    chrome.runtime.sendMessage(imageProcessingMessage, response => {
-      console.log(response);
-    });
-  })();
 }, 10000);
 
 // Html Text Content Control
@@ -40,3 +32,13 @@ if (window.location.href.search('blog.naver.com') !== -1) {
     console.log(response);
   });
 }
+
+// Html Image Content Control
+setTimeout(function () {
+  (async function () {
+    const imageProcessingMessage = await imageProcessingFromHTML(document);
+    chrome.runtime.sendMessage(imageProcessingMessage, response => {
+      console.log(response);
+    });
+  })();
+}, 10000);
