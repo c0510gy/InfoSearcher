@@ -41,4 +41,4 @@ setTimeout(function () {
       console.log(response);
     });
   })();
-}, 10000);
+}, 2000);
