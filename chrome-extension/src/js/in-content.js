@@ -14,12 +14,20 @@ setInterval(function () {
       console.log('response', response);
     }
   );
+
+  // Html Image Content Control
+  (async function () {
+    const imageProcessingMessage = await imageProcessingFromHTML(document);
+    chrome.runtime.sendMessage(imageProcessingMessage, response => {
+      console.log(response);
+    });
+  })();
 }, 10000);
 
 // Html Text Content Control
 let message;
 if (window.location.href.search('blog.naver.com') !== -1) {
-  setTimeout(function() {
+  setTimeout(function () {
     let iframe = document.getElementById('mainFrame');
     message = htmlProcessing(iframe.contentDocument.cloneNode(true));
     chrome.runtime.sendMessage(message, response => {
@@ -32,11 +40,3 @@ if (window.location.href.search('blog.naver.com') !== -1) {
     console.log(response);
   });
 }
-
-// Html Image Content Control
-(async function () {
-  const imageProcessingMessage = await imageProcessingFromHTML(document);
-  chrome.runtime.sendMessage(imageProcessingMessage, response => {
-    console.log(response);
-  });
-})();

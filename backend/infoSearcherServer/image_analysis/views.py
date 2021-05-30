@@ -8,7 +8,7 @@ from .apis import YOLOV3_MODEL, COCO_LABELS, detect, readb64
 
 
 class ImageAnalysisView(APIView):
-    def get(self, request):
+    def post(self, request):
         data = json.loads(request.body)
 
         image = readb64(data['image'])
