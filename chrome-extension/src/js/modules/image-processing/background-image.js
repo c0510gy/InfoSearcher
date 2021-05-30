@@ -17,8 +17,9 @@ export default function imageProcessing(message, sendResponse) {
       resp.data.detected.forEach(item => detected.push(item));
     }
 
-    console.log(detected);
-    backgroundGlobal.image = detected;
+    backgroundGlobal.image = {};
+
+    backgroundGlobal.image.content = detected.join(',');
     sendResponse({ type: 'image', message: 200 });
   })();
 }
