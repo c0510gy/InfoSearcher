@@ -14,6 +14,10 @@ module.exports = {
     filename: '[name].js'
   },
 
+  node: {
+    fs: 'empty'
+  },
+
   cache: true,
   devtool: 'eval-cheap-module-source-map',
 

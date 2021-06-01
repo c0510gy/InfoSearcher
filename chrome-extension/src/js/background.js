@@ -68,7 +68,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
       textProcessing(message, sendResponse);
       break;
     case 'image':
-      backgroundGlobal.image = imageProcessing(message, sendResponse);
+      imageProcessing(message, sendResponse);
       break;
   }
 
