@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'text_analysis',
     'image_analysis',
+    'audio_analysis',
 ]
 
 MIDDLEWARE = [

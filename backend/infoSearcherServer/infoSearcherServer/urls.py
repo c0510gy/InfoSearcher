@@ -21,4 +21,5 @@ urlpatterns = [
     path('backend/', include('backendApp.urls')),
     path('text/', include('text_analysis.urls')),
     path('image/', include('image_analysis.urls')),
+    path('audio/', include('audio_analysis.urls')),
 ]

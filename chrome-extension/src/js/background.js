@@ -1,13 +1,15 @@
 import mock from './modules/mock';
 import textProcessing from './modules/text-processing/background-text';
 import imageProcessing from './modules/image-processing/background-image';
+import audioProcessing from './modules/audio-processing/background-audio';
 import { Recorder } from './modules/audio-processing/recorder';
 
 const backgroundGlobal = {};
 let cntTabId = null,
   liveStream,
   audioCtx,
-  mediaRecorder;
+  mediaRecorder,
+  prevbuf;
 
 function audioCapture(tabId) {
   chrome.tabCapture.capture({ audio: true }, function (stream) {
@@ -15,8 +17,9 @@ function audioCapture(tabId) {
     audioCtx = new AudioContext();
     const source = audioCtx.createMediaStreamSource(stream);
 
+    prevbuf = [];
     mediaRecorder = new Recorder(source);
-    mediaRecorder.startRecording(tabId);
+    mediaRecorder.startRecording(tabId, prevbuf);
 
     const audio = new Audio();
     audio.srcObject = liveStream;
@@ -37,6 +40,7 @@ function stopCapture() {
   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
     const endTabId = tabs[0].id;
     if (mediaRecorder && cntTabId === endTabId) {
+      audioProcessing(prevbuf);
       mediaRecorder.finishRecording();
       audioCtx.close();
       liveStream.getAudioTracks()[0].stop();

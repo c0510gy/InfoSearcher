@@ -1,6 +1,6 @@
 import mock from './modules/mock';
 import getTextCardList from './modules/text-processing/popup-text';
-
+import getAudioCardList from './modules/audio-processing/popup-audio';
 
 function mockButtonClickedHandler() {
   chrome.runtime.sendMessage(
@@ -34,6 +34,9 @@ function updateCards() {
     `;
 
     cardListElement.appendChild(imageCard);
+  }
+  if (backgroundGlobal.audio) {
+    cardListElement.appendChild(getAudioCardList(backgroundGlobal.audio));
   }
 }
 
