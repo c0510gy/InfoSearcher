@@ -45,7 +45,7 @@ function filterWithSpace(content) {
   return ret.trim();
 }
 
-function naverProcessing(html) {
+function naverProcessing(html, title) {
   html = html.getElementById('post-area');
   NAVER_TAGS.forEach(function (tag) {
     html = removeTag(html, tag);
@@ -79,7 +79,7 @@ export default function htmlProcessing(html) {
 
   // Naver processing
   if (window.location.href.search('blog.naver.com') !== -1) {
-    return naverProcessing(html);
+    return naverProcessing(html, title);
   }
 
   // Remove Tag Element
