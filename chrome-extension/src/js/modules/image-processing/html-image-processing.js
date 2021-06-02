@@ -23,6 +23,7 @@ export default async function imageProcessingFromHTML(document) {
   const documentImages = document.images;
   for (let i = 0; i < documentImages.length; ++i) {
     const imageElem = documentImages[i];
+    if (!imageElem.width || imageElem.width < 100) continue;
     try {
       images.push({
         base64: await getBase64Image(imageElem.src),
