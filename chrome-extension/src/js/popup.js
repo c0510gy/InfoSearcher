@@ -1,18 +1,6 @@
 import mock from './modules/mock';
 import getTextCardList from './modules/text-processing/popup-text';
 
-
-function mockButtonClickedHandler() {
-  chrome.runtime.sendMessage(
-    {
-      type: 'mock'
-    },
-    response => {
-      console.log('response', response);
-    }
-  );
-}
-
 function updateCards() {
   const cardListElement = document.getElementById('cardList');
   const { backgroundGlobal } = chrome.extension.getBackgroundPage();
@@ -38,9 +26,6 @@ function updateCards() {
 }
 
 const initPopupScript = () => {
-  document.getElementById('mockButton').addEventListener('click', function () {
-    mockButtonClickedHandler();
-  });
   updateCards();
   setInterval(updateCards, 2000);
 };
